@@ -12,7 +12,8 @@ public:
 
             xr ^= nums[i];
 
-            cnt += mpp[xr];
+           int x = xr ^ 0;  
+           cnt += mpp[x];
 
             mpp[xr]++;
         }
