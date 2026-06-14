@@ -13,7 +13,11 @@ public:
             xr ^= nums[i];
 
            int x = xr ^ 0;  
-           cnt += mpp[x];
+
+           if(mpp.find(x) != mpp.end()) {
+            cnt += mpp[x];
+           }
+           
 
             mpp[xr]++;
         }
