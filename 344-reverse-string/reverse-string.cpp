@@ -1,12 +1,23 @@
 class Solution {
+
+private:
+
+void reverse( vector<char> &s, int left, int right) {
+    if(left >= right) {
+        return;
+    }
+    swap(s[left], s[right]);
+
+    return reverse(s, left + 1, right - 1);
+
+}
+
 public:
     void reverseString(vector<char>& s) {
-        int n  = s.size();
-        int st = 0, end = s.size() - 1;
-        while (st < n/2) {
-            swap(s[st], s[end]);
-            st++;
-            end--;
-        }
+        int left = 0;
+        int right = s.size() -1;
+
+       return reverse(s , left, right);
+        
     }
 };
