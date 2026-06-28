@@ -8,9 +8,7 @@ private:
             return false;
         }
          return check (left+1, right -1 , x);
-
     }
-
 
 public:
     bool isPalindrome(int x) {
@@ -18,6 +16,8 @@ public:
             return false;
 
             string s = to_string(x);
-            return check(0, s.size() - 1, s);    
+            int left = 0;
+            int right = s.size() -1;
+            return check(left, right, s);    
     }
 };
