@@ -17,7 +17,7 @@ public:
         unordered_set<int> visited;
 
         while( n != 1) {
-            if(visited.count(n)) {
+            if(visited.find(n) != visited.end()) {
                 return false;
             }
 
