@@ -1,27 +1,25 @@
 class Solution {
-private:
-    int checkSum(int n ) {
-        int sum = 0;
-
-        while(n > 0) {
+    private:
+    int sum(int n) {
+        int summ = 0;
+        while( n  > 0) {
             int lastDig = n % 10;
-            sum = sum + (lastDig * lastDig);
-            n = n / 10;
+            summ = summ + (lastDig * lastDig);
+            n = n /10;
         }
-        return sum;
+        return summ;
     }
+    
 
 public:
     bool isHappy(int n) {
-        unordered_set<int> check;
+        unordered_set<int> stt;
         while( n != 1) {
-            if(check.count(n)) {
-                return false;
-            }
-
-            check.insert(n);
-            n=  checkSum(n);
-
+            if(stt.find(n) != stt.end()) {
+            return false;
+        }
+            stt.insert(n);
+             n = sum (n);
         }
         return true;
     }
