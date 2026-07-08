@@ -1,27 +1,23 @@
 class Solution {
 public:
     long long sumAndMultiply(int n) {
-        if (n == 0) return 0;
-
-        vector<int> digits;
-
-        while (n > 0) {
-            int d = n % 10;
-            if (d != 0)
-                digits.push_back(d);
-            n /= 10;
+        if ( n == 0) return 0;
+        vector<int> ans;
+        while(n > 0) {
+            int lastDig = n % 10;
+            if( lastDig != 0) {
+                ans.push_back(lastDig);
+            }
+            n = n / 10;
         }
-
-        reverse(digits.begin(), digits.end());
-
-        long long x = 0;
+        reverse(ans.begin(), ans.end());
         int sum = 0;
-
-        for (int d : digits) {
-            x = x * 10 + d;
-            sum += d;
+        long long x = 0;
+        for( auto a : ans) {
+            sum  = sum + a;
+            x = (x * 10) + a;
         }
 
-        return x * sum;
+        return 1LL* sum * x;
     }
 };
