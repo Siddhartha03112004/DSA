@@ -6,12 +6,11 @@ public:
         for(int i = 2 ;  i <= x; i++) {
               long long a = 1LL * i * i;
              if( a == x) {
-                ans = i;
-                break;
+                return i;
               }
             else if(a > x) {
-                ans = i-1;
-                break;
+                 return i-1;
+                
             }
         }
         return ans;
