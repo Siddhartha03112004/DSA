@@ -6,9 +6,7 @@ public:
         vector<long long> prefix(n);
 
         int mx = nums[0];
-        prefix[0] = nums[0];
-
-        for (int i = 1; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             mx = max(mx, nums[i]);
             prefix[i] = gcd(mx, nums[i]);
         }
