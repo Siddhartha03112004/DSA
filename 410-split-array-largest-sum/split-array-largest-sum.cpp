@@ -1,32 +1,44 @@
 class Solution {
 public:
-    int countPartitions(vector<int> &a, int maxSum) {
-        int n = a.size();
-        int partitions = 1;
-        long long subarraySum = 0;
-        for (int i = 0; i < n; i++) {
-            if (subarraySum + a[i] <= maxSum) {
-                subarraySum += a[i];
-            } else {
-                partitions++;
-                subarraySum = a[i];
+
+    int cancheck(vector<int> &nums, int limit) {
+
+        int subarrays = 1;
+        int currSum = 0;
+
+        for(int i = 0; i < nums.size(); i++) {
+
+            if(currSum + nums[i] <= limit) {
+                currSum += nums[i];
             }
+            else {
+                subarrays++;
+                currSum = nums[i];
+            }
+
         }
-        return partitions;
+
+        return subarrays;
     }
 
     int splitArray(vector<int>& nums, int k) {
+
         int low = *max_element(nums.begin(), nums.end());
         int high = accumulate(nums.begin(), nums.end(), 0);
-        while (low <= high) {
+
+        while(low <= high) {
+
             int mid = low + (high - low) / 2;
-            int partitions = countPartitions(nums, mid);
-            if (partitions > k) {
-                low = mid + 1;
-            } else {
+
+            if(cancheck(nums, mid) <= k) {
                 high = mid - 1;
             }
+            else {
+                low = mid + 1;
+            }
+
         }
+
         return low;
     }
 };
