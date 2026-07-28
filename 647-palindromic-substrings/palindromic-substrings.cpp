@@ -1,34 +1,30 @@
 class Solution {
-
-bool check(string s) {
-        int i = 0;
-        int j = s.size() - 1;
-
-        while (i < j) {
-            if (s[i] != s[j]) {
+public:
+    bool check(string &s, int left, int right) {
+        while (left < right) {
+            if (s[left] != s[right])
                 return false;
-            }
-            i++;
-            j--;
+
+            left++;
+            right--;
         }
 
         return true;
-}
-public:
+    }
+
     int countSubstrings(string s) {
         int count = 0;
-        for(int i  = 0 ; i< s.size() ; i++ ) {
-            string ans = "";
-            for(int j = i ; j < s.size(); j++) {
-                ans  = ans + s[j];
-                bool apple = check(ans);
-                if(apple) {
+
+        for (int i = 0; i < s.size(); i++) {
+            for (int j = i; j < s.size(); j++) {
+
+                if (check(s, i, j)) {
                     count++;
                 }
-            }
 
-           
+            }
         }
-         return count;
+
+        return count;
     }
 };
