@@ -1,24 +1,24 @@
 class Solution {
+private:
+    double power(double x, long long n) {
+        if (n == 0)
+            return 1.0;
+
+        if (n % 2 == 1)
+            return x * power(x, n - 1);
+
+        return power(x * x, n / 2);
+    }
+
 public:
     double myPow(double x, int n) {
-        double ans = 1.0;
-        long long temp = n;
+        long long N = n;
 
-        if (temp < 0) {
-            x = 1 / x;
-            temp = -temp;
+        if (N < 0) {
+            x = 1.0 / x;
+            N = -N;
         }
 
-        while (temp > 0) {
-            if (temp % 2 == 1) {
-                ans *= x;
-                temp--;
-            } else {
-                x *= x;
-                temp /= 2;
-            }
-        }
-
-        return ans;
+        return power(x, N);
     }
 };
