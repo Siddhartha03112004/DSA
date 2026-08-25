@@ -1,7 +1,11 @@
 class Solution {
 public:
     int missingMultiple(vector<int>& nums, int k) {
-        set<int> st(nums.begin(), nums.end());
+        set<int> st;
+
+        for (int x : nums) {
+            st.insert(x);
+        }
 
         int ans = k;
 
