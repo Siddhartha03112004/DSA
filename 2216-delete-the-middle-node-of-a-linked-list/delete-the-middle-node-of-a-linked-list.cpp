@@ -17,32 +17,20 @@ public:
             return NULL;
         }
 
-        // 2. Find length
-        ListNode* temp = head;
-        int curr = 0;
-
-        while (temp != NULL) {
-            curr++;
-            temp = temp->next;
-        }
-
-        // 3. Find middle index
-        int middle = curr / 2;
-
-        // 4. Reset temp
-        temp = head;
+        ListNode* fast  =  head;
+        ListNode* slow = head;
         ListNode* prev = NULL;
 
-        // 5. Move temp to middle, keeping prev behind it
-        for (int i = 0; i < middle; i++) {
-            prev = temp;
-            temp = temp->next;
+        while(fast !=  NULL && fast->next != NULL) {
+            prev = slow;
+            slow = slow -> next;
+            fast = fast ->next -> next;
         }
 
-        // 6. Delete middle
-        prev->next = temp->next;
-        delete temp;
+        prev -> next = slow -> next;
+        delete slow;
 
         return head;
+        
     }
 };
