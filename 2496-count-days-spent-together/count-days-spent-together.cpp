@@ -29,7 +29,7 @@ public:
         int start = max(a1, b1);
         int end = min(a2, b2);
 
-        int ans = max(0, end - start + 1);
+        int ans = max(0, end - start+1);
 
         return ans;
     }
