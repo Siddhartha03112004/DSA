@@ -24,14 +24,20 @@ public:
 
         reverse(ans.begin(), ans.end());
 
-        for (int i = 0; i < ans.size();) {
-            if (ans[i] == '0') {
-                ans.erase(ans.begin() + i);
-            } else {
-                break;
-            }
+        int i = 0;
+        while (i < ans.size() && ans[i] == '0') {
+            i++;
         }
 
-        return ans.empty() ? "0" : ans;
+        string result = "";
+        for (int j = i; j < ans.size(); j++) {
+            result += ans[j];
+        }
+
+        if (result.empty()) {
+            return "0";
+        }
+
+        return result;
     }
 };
